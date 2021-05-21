@@ -4,6 +4,49 @@
 	<title>Fizz Buzz</title>
 </head>
 <body>
+<button class="Start">Start</button>
+<p id = "Replace"> </p>
+<script type="text/javascript">
+	const Startbtn = document.querySelector(".Start");
+	Startbtn.addEventListener("click", () => {
+		Startbtn.disabled = true;
+		let letsStart = Start();
+	})
+	async function Start()
+	{
+		let _FizzBuzzValues = await fuzzy();
+		let string = _FizzBuzzValues.join(",<br>");
+		document.getElementById("Replace").innerHTML = string;
+	}
+	function fuzzy () // Fizz Buzz from 1 to 100
+	{
+		let values = [];
+		// if we wanted, we could replace 100 with an input box value
+		for(i = 0; i <= 100; i++)
+		{
+			if(i % 3 === 0) // if i divided by 3s remainder is equal to 0
+			{
+				if(i % 5 === 0) // if 5 also has no remainder
+				{
+					values.push("FizzBuzz"); // i is a multiple of both 5 and 3
+				}
+				else
+				{
+					values.push("Fizz");// i is a multiple of 3
+				}
+			}
+			else if(i % 5 === 0)
+			{
+					values.push("Buzz");  // i is a multiple of 5
+			}
+			else
+			{
+				values.push(i);
+			}
 
+		}
+		return values;
+	}
+</script>
 </body>
 </html>
